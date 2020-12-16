@@ -5,17 +5,19 @@ using namespace std;
 
 void printArr(int* arr, int size);
 void bubbleSort(int* arr, int size);
+void selectionSort(int* arr, int size);
 int* makeArr(int size);
 void mySwap(int& a, int& b);
 
 int main() 
 {
 	srand(time(NULL));
-	int size = 1000;
+	int size = 100;
 	int *arr = makeArr(size);
 	cout << "Initial array: " << endl;
 	printArr(arr, size);
-	bubbleSort(arr, size);
+	//bubbleSort(arr, size);
+	selectionSort(arr, size);
 	cout << "Array after sorting: " << endl;
 	printArr(arr, size);
 	delete arr;
@@ -40,6 +42,23 @@ void bubbleSort(int* arr, int size)
 		}
 		cout << "__________________________" << endl;
 		printArr(arr, size);
+	}
+}
+
+void selectionSort(int* arr, int size)
+{
+	for (int i = 0; i < size - 1; i++) {
+		int tmp = arr[i];
+		int index = i;
+		for (int j = i; j < size; j++) {
+			if (arr[j] < tmp) {
+				tmp = arr[j];
+				index = j;
+			}
+		}
+		cout << "__________________________" << endl;
+		printArr(arr, size);
+		mySwap(arr[i], arr[index]);
 	}
 }
 
